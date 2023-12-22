@@ -12,6 +12,7 @@ replit*
 *.toml
 *.lock
 .gitattributes
+images*
 
 # C extensions
 *.so

@@ -18,11 +18,12 @@ def main():
     args = parser.parse_args()
     posting_time = args.delay
     while True:
-        for folder, list, files in os.walk("images"):
+        for folder, empty, files in os.walk("images"):
             random.shuffle(files)
             for file in files:
-                path = os.path.join(folder, file)
-                bot.send_photo(chat_id=chat_id, photo=open(path, "rb"))
+                file_path = os.path.join(folder, file)
+                with open(file_path, "rb") as file:
+                    bot.send_photo(chat_id=chat_id, photo=file)
                 time.sleep(posting_time)
 
 if __name__ == "__main__":

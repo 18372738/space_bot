@@ -1,8 +1,8 @@
 import requests
 
 
-def save_images(url, path):
-  response = requests.get(url)
+def save_image(url, path, token=""):
+  response = requests.get(url, params=token)
   response.raise_for_status()
   with open(path, 'wb') as file:
       file.write(response.content)
