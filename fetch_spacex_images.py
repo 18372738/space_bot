@@ -10,8 +10,8 @@ def fetch_spacex_last_launch(spacex_launch_id):
     url = f'https://api.spacexdata.com/v5/launches/{spacex_launch_id}'
     response = requests.get(url)
     response.raise_for_status()
-    url_image = response.json()['links']['flickr']['original']
-    for number, url in enumerate(url_image):
+    image_urls = response.json()['links']['flickr']['original']
+    for number, url in enumerate(image_urls):
         save_image(url, f'images/spacex_{number}.jpg')
 
 
