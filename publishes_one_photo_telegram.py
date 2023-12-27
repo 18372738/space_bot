@@ -16,10 +16,11 @@ def main():
     parser.add_argument("--filename", help="Имя файла" )
     args = parser.parse_args()
     filename = args.filename
-    if filename is None:
+    if not filename:
         filename = random.choice(os.listdir('images'))
     with open(f'images/{filename}', "rb") as file:
         bot.send_photo(chat_id=chat_id, photo=file)
+
 
 if __name__ == "__main__":
     main()
